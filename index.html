@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<body style="background:#111; display:flex; justify-content:center; align-items:center; height:100vh;">
+<body style="background:#0b0f14; display:flex; justify-content:center; align-items:center; height:100vh;">
 
 <canvas id="sprite" width="16" height="32"
 style="image-rendering: pixelated; width:320px; height:640px;"></canvas>
@@ -14,32 +14,57 @@ function px(x,y,color){
   ctx.fillRect(x,y,1,1);
 }
 
-// 幹（中央やや左に寄せる）
-for(let y=12; y<30; y++){
-  px(7,y,"#8b5a2b");
-  px(8,y,"#a66b33");
+// カラーパレット
+const trunkDark = "#6b3f1d";
+const trunkMid  = "#8c5526";
+const trunkLight= "#b87333";
+
+const leafDark  = "#0b7a2b";
+const leafMid   = "#1faa3f";
+const leafLight = "#35e25a";
+
+// ===== 葉（放射状） =====
+for(let i=0;i<4;i++){
+  px(7,4-i,leafLight);
+  px(8,4-i,leafMid);
 }
 
-// 葉（上部16px全部使う）
-const leaf = "#2ecc40";
-px(6,10,leaf); px(7,10,leaf); px(8,10,leaf); px(9,10,leaf);
+for(let x=4;x<=11;x++){
+  px(x,6,leafMid);
+  px(x,7,leafMid);
+}
 
-px(5,9,leaf); px(6,9,leaf); px(7,9,leaf); px(8,9,leaf); px(9,9,leaf); px(10,9,leaf);
+px(3,7,leafDark);
+px(12,7,leafDark);
+px(2,8,leafDark);
+px(13,8,leafDark);
 
-px(4,8,leaf); px(5,8,leaf); px(6,8,leaf); px(7,8,leaf); px(8,8,leaf); px(9,8,leaf); px(10,8,leaf); px(11,8,leaf);
+px(4,8,leafDark);
+px(5,9,leafDark);
+px(10,9,leafDark);
+px(11,8,leafDark);
 
-px(3,7,leaf); px(4,7,leaf); px(5,7,leaf); px(6,7,leaf);
-px(9,7,leaf); px(10,7,leaf); px(11,7,leaf); px(12,7,leaf);
+// 葉の陰影
+px(6,8,leafLight);
+px(9,8,leafLight);
+px(7,9,leafLight);
+px(8,9,leafLight);
 
-// 上の中心葉
-px(7,6,leaf);
-px(8,6,leaf);
-px(7,5,leaf);
-px(8,5,leaf);
+// ===== ココナッツ =====
+px(7,10,"#7a3e1e");
+px(8,10,"#5c2d16");
 
-// ココナッツ
-px(7,11,"#a0522d");
-px(8,11,"#a0522d");
+// ===== 幹（縦方向グラデ）=====
+for(let y=11;y<31;y++){
+  px(7,y,trunkDark);
+  px(8,y,trunkMid);
+  px(9,y,trunkLight);
+}
+
+// 根元少し広げる
+px(6,30,trunkDark);
+px(9,30,trunkMid);
+px(10,30,trunkLight);
 </script>
 
 </body>

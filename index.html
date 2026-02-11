@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body style="background:#222; display:flex; justify-content:center; align-items:center; height:100vh;">
+<canvas id="px" width="32" height="16" style="image-rendering: pixelated; width:320px; height:160px;"></canvas>
+
+<script>
+const c = document.getElementById("px");
+const ctx = c.getContext("2d");
+
+// 背景透明
+ctx.clearRect(0,0,32,16);
+
+// 砂
+ctx.fillStyle = "#d8b85a";
+ctx.fillRect(12,11,8,3);
+
+// 幹
+ctx.fillStyle = "#8b5a2b";
+ctx.fillRect(15,7,2,4);
+
+// 葉
+ctx.fillStyle = "#2ecc40";
+ctx.fillRect(13,6,6,2);
+ctx.fillRect(14,5,4,1);
+
+// ココナッツ
+ctx.fillStyle = "#a0522d";
+ctx.fillRect(16,6,1,1);
+</script>
+</body>
+</html>

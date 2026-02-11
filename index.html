@@ -1,31 +1,46 @@
 <!DOCTYPE html>
 <html>
-<body style="background:#222; display:flex; justify-content:center; align-items:center; height:100vh;">
-<canvas id="px" width="32" height="16" style="image-rendering: pixelated; width:320px; height:160px;"></canvas>
+<body style="background:#111; display:flex; justify-content:center; align-items:center; height:100vh;">
+
+<canvas id="sprite" width="16" height="32"
+style="image-rendering: pixelated; width:320px; height:640px;"></canvas>
 
 <script>
-const c = document.getElementById("px");
+const c = document.getElementById("sprite");
 const ctx = c.getContext("2d");
 
-// 背景透明
-ctx.clearRect(0,0,32,16);
+function px(x,y,color){
+  ctx.fillStyle = color;
+  ctx.fillRect(x,y,1,1);
+}
 
-// 砂
-ctx.fillStyle = "#d8b85a";
-ctx.fillRect(12,11,8,3);
+// 幹（中央やや左に寄せる）
+for(let y=12; y<30; y++){
+  px(7,y,"#8b5a2b");
+  px(8,y,"#a66b33");
+}
 
-// 幹
-ctx.fillStyle = "#8b5a2b";
-ctx.fillRect(15,7,2,4);
+// 葉（上部16px全部使う）
+const leaf = "#2ecc40";
+px(6,10,leaf); px(7,10,leaf); px(8,10,leaf); px(9,10,leaf);
 
-// 葉
-ctx.fillStyle = "#2ecc40";
-ctx.fillRect(13,6,6,2);
-ctx.fillRect(14,5,4,1);
+px(5,9,leaf); px(6,9,leaf); px(7,9,leaf); px(8,9,leaf); px(9,9,leaf); px(10,9,leaf);
+
+px(4,8,leaf); px(5,8,leaf); px(6,8,leaf); px(7,8,leaf); px(8,8,leaf); px(9,8,leaf); px(10,8,leaf); px(11,8,leaf);
+
+px(3,7,leaf); px(4,7,leaf); px(5,7,leaf); px(6,7,leaf);
+px(9,7,leaf); px(10,7,leaf); px(11,7,leaf); px(12,7,leaf);
+
+// 上の中心葉
+px(7,6,leaf);
+px(8,6,leaf);
+px(7,5,leaf);
+px(8,5,leaf);
 
 // ココナッツ
-ctx.fillStyle = "#a0522d";
-ctx.fillRect(16,6,1,1);
+px(7,11,"#a0522d");
+px(8,11,"#a0522d");
 </script>
+
 </body>
 </html>
